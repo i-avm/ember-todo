@@ -1,5 +1,34 @@
 {{page-title "EmberTodo"}}
 
-<h2 id="title">Welcome to Ember</h2>
+<section class="todoapp">
+  <header class="header">
+    <h1>todos</h1>
+    <input
+    aria-label="todo-input"
+      class="new-todo"
+      onkeyup={{this.createTodo}}
+      placeholder="What needs to be done?"
+    >
+  </header>
+  {{outlet}}
+    <footer class="footer" aria-label="todo-footer">
+      <span class="todo-count"><strong>{{this.remaining.length}}</strong> {{pluralize "item" this.remaining.length}} left</span>
+      <ul class="filters">
+        {{!-- <li>{{#link-to "index" activeClass="selected"}}All{{/link-to}}</li>
+        <li>{{#link-to "active" activeClass="selected"}}Active{{/link-to}}</li>
+        <li>{{#link-to "completed" activeClass="selected"}}Completed{{/link-to}}</li> --}}
+      </ul>
+      {{#if this.completed.length}}
+        <button class="clear-completed" {{on 'click' this.clearCompleted}} type="button">Clear completed</button>
+      {{/if}}
+    </footer>
+</section>
+<footer class="info" aria-label="footer-info">
+  <p>Double-click to edit a todo</p>
+  <p>
+    Created by
+    <a href="https://github.com/iam-avm">AVM</a>,
+  </p>
+</footer>
 
 {{outlet}}

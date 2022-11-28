@@ -20,6 +20,9 @@ module.exports = function (defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+  app.import('node_modules/todomvc-app-css/index.css');
+  app.import('node_modules/todomvc-common/base.js'); // This includes the code that will display the "learn" sidebar
+
   const { Webpack } = require('@embroider/webpack');
   return require('@embroider/compat').compatBuild(app, Webpack, {
     skipBabel: [
